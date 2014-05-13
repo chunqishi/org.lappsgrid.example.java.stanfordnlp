@@ -28,8 +28,12 @@ public class TestStanfordTagger {
         target1 = IOUtils.toString(in);
 
         in =  this.getClass().getClassLoader().getResourceAsStream("splitter.json");
+        input2 = new Data();
         input2.setDiscriminator(Types.JSON);
         input2.setPayload(IOUtils.toString(in));
+
+        in =  this.getClass().getClassLoader().getResourceAsStream("tagger2.json");
+        target2 = IOUtils.toString(in);
     }
 
     public static final boolean jsonEqual(String json1, String json2) {
@@ -55,7 +59,7 @@ public class TestStanfordTagger {
 
         // Test JSON input
         Data output2 = tagger.execute(input2);
-        System.out.println(output2.getPayload());
-
+//        System.out.println(output2.getPayload());
+        Assert.assertTrue(jsonEqual(output2.getPayload(), target2));
     }
 }

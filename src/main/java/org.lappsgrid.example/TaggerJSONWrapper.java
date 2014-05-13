@@ -10,15 +10,15 @@ import java.util.ArrayList;
  * Created by shi on 5/13/14.
  */
 public class TaggerJSONWrapper {
-    JSONObject json = new JSONObject();
-    JSONObject currentStep = new JSONObject();
-    JSONObject currentStepMeta = new JSONObject();
-    JSONObject contains = new JSONObject();
-    JSONObject contain = new JSONObject();
-    JSONArray annotations = new JSONArray();
-    JSONArray steps = new JSONArray();
-    JSONObject text = new JSONObject();
-    JSONObject metadata = new JSONObject();
+    JSONObject json = null;
+    JSONObject currentStep = null;
+    JSONObject currentStepMeta = null;
+    JSONObject contains = null;
+    JSONObject contain = null;
+    JSONArray annotations = null;
+    JSONArray steps = null;
+    JSONObject text = null;
+    JSONObject metadata = null;
     static int id = 0;
 
     JSONObject lastStep = null;
@@ -27,11 +27,19 @@ public class TaggerJSONWrapper {
     JSONObject lastStepContains = null;
 
     public TaggerJSONWrapper(String textjson) {
+        id = 0;
         json = new JSONObject(textjson);
         text = json.getJSONObject("text");
         String textvalue = text.getString("@value");
         steps =  json.getJSONArray("steps");
         metadata = json.getJSONObject("metadata");
+
+        currentStep = new JSONObject();
+        currentStepMeta = new JSONObject();
+        contains = new JSONObject();
+        contain = new JSONObject();
+        annotations = new JSONArray();
+
 
         if(steps.length() > 0) {
             lastStep = (JSONObject)steps.get(steps.length() - 1);
@@ -47,7 +55,6 @@ public class TaggerJSONWrapper {
         }
         contain.put("producer", "");
         contain.put("type", "");
-        text.put("@value", "");
         contains.put("Tagger", contain);
         currentStepMeta.put("contains", contains);
         currentStep.put("metadata", currentStepMeta);
@@ -59,6 +66,17 @@ public class TaggerJSONWrapper {
     }
 
     public TaggerJSONWrapper() {
+        id = 0;
+        json = new JSONObject();
+        currentStep = new JSONObject();
+        currentStepMeta = new JSONObject();
+        contains = new JSONObject();
+        contain = new JSONObject();
+        annotations = new JSONArray();
+        steps = new JSONArray();
+        text = new JSONObject();
+        metadata = new JSONObject();
+
         contain.put("producer", "");
         contain.put("type", "");
         text.put("@value", "");

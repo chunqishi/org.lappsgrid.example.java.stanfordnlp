@@ -73,6 +73,32 @@ public class StanfordTagger implements WebService {
                 }
                 return DataFactory.json(json.toString());
 
+            } else  if (discriminator == Types.JSON) {
+                String textjson = data.getPayload();
+                TaggerJSONWrapper json = new TaggerJSONWrapper(textjson);
+
+                json.setProducer(this.getClass().getName() + ":" + VERSION);
+                json.setType("annotation:tagger");
+
+                // Stanford Tagger
+                Annotation annotation = new Annotation(json.text.getString("@value"));
+                snlp.annotate(annotation);
+                // sentences
+                List<CoreMap> sentences = annotation.get(CoreAnnotations.SentencesAnnotation.class);
+                ArrayList<HashMap<String, String>> res = new ArrayList<HashMap<String, String>>();
+
+                for (CoreMap sentence : sentences) {
+                    for (CoreLabel label : sentence.get(CoreAnnotations.TokensAnnotation.class)) {
+                        JSONObject ann = json.newAnnotation();
+                        // text
+                        String word = label.get(CoreAnnotations.TextAnnotation.class);
+                        json.setWord(ann, word);
+                        // pos
+                        String pos = label.get(CoreAnnotations.PartOfSpeechAnnotation.class);
+                        json.setTag(ann, pos);
+                    }
+                }
+                return DataFactory.json(json.toString());
             } else {
                 String name = DiscriminatorRegistry.get(discriminator);
                 String message = "Invalid input type. Expected Text but found " + name;
