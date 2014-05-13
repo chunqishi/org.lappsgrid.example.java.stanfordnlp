@@ -1,0 +1,60 @@
+{
+    "text": {
+        "@value": "How are you today?"
+    },
+    "steps": [
+        {
+            "annotations": [
+                {
+                    "id": "pos0",
+                    "@type": "Token",
+                    "features": {
+                        "category": "WRB",
+                        "word": "How"
+                    }
+                },
+                {
+                    "id": "pos0",
+                    "@type": "Token",
+                    "features": {
+                        "category": "VBP",
+                        "word": "are"
+                    }
+                },
+                {
+                    "id": "pos0",
+                    "@type": "Token",
+                    "features": {
+                        "category": "PRP",
+                        "word": "you"
+                    }
+                },
+                {
+                    "id": "pos0",
+                    "@type": "Token",
+                    "features": {
+                        "category": "NN",
+                        "word": "today"
+                    }
+                },
+                {
+                    "id": "pos0",
+                    "@type": "Token",
+                    "features": {
+                        "category": ".",
+                        "word": "?"
+                    }
+                }
+            ],
+            "metadata": {
+                "contains": {
+                    "Tagger": {
+                        "producer": "org.lappsgrid.example.StanfordTagger:0.0.1-SNAPSHOT",
+                        "type": "annotation:tagger"
+                    }
+                }
+            }
+        }
+    ],
+    "metadata": {}
+}

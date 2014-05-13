@@ -1,15 +1,34 @@
 package org.lappsgrid.example;
 
-import org.junit.Assert;
+import junit.framework.Assert;
+import org.apache.commons.io.IOUtils;
+import org.json.JSONObject;
 import org.junit.Test;
 import org.junit.After;
 import org.junit.Before;
+import org.lappsgrid.api.Data;
+import org.lappsgrid.discriminator.Types;
+
+import java.io.IOException;
 
 public class TestStanfordTagger {
+    Data input1 = null;
+    String target1 = null;
 
     @Before
-    public void setUp(){
+    public void setUp() throws IOException {
+        input1 = new Data();
+        input1.setDiscriminator(Types.TEXT);
+        input1.setPayload("How are you today?");
 
+        java.io.InputStream in =  this.getClass().getClassLoader().getResourceAsStream("tagger.json");
+        target1 = IOUtils.toString(in);
+    }
+
+    public static final boolean jsonEqual(String json1, String json2) {
+        JSONObject obj1 = new JSONObject(json1);
+        JSONObject obj2 = new JSONObject(json2);
+        return obj1.toString().equals(obj2.toString());
     }
 
     @After
@@ -19,6 +38,9 @@ public class TestStanfordTagger {
 
     @Test
     public void test(){
-
+        StanfordTagger tagger  = new StanfordTagger();
+        Data output1 = tagger.execute(input1);
+        System.out.println(output1.getPayload());
+        Assert.assertTrue(jsonEqual(output1.getPayload(), target1));
     }
 }

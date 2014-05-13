@@ -45,7 +45,8 @@ public class StanfordTagger implements WebService {
             if (discriminator == Types.ERROR)
             {
                 return data;
-            } else  if (discriminator == Types.TEXT) {
+            }
+            else  if (discriminator == Types.TEXT) {
                 String text = data.getPayload();
                 TaggerJSONWrapper json = new TaggerJSONWrapper();
                 json.setText(text);
