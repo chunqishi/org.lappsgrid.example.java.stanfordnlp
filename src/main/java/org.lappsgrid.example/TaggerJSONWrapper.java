@@ -86,7 +86,7 @@ public class TaggerJSONWrapper {
     public JSONObject newAnnotation(){
         JSONObject annotation = new JSONObject();
         annotation.put("@type", "Token");
-        annotation.put("id", "pos" + id);
+        annotation.put("id", "pos" + id ++);
         annotations.put(annotation);
         return annotation;
     }

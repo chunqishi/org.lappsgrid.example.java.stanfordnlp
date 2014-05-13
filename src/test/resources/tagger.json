@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "id": "pos0",
+                    "id": "pos1",
                     "@type": "Token",
                     "features": {
                         "category": "VBP",
@@ -22,7 +22,7 @@
                     }
                 },
                 {
-                    "id": "pos0",
+                    "id": "pos2",
                     "@type": "Token",
                     "features": {
                         "category": "PRP",
@@ -30,7 +30,7 @@
                     }
                 },
                 {
-                    "id": "pos0",
+                    "id": "pos3",
                     "@type": "Token",
                     "features": {
                         "category": "NN",
@@ -38,7 +38,7 @@
                     }
                 },
                 {
-                    "id": "pos0",
+                    "id": "pos4",
                     "@type": "Token",
                     "features": {
                         "category": ".",

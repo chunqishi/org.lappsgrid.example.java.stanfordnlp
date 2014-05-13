@@ -15,6 +15,9 @@ public class TestStanfordTagger {
     Data input1 = null;
     String target1 = null;
 
+    Data input2 = null;
+    String target2 = null;
+
     @Before
     public void setUp() throws IOException {
         input1 = new Data();
@@ -23,6 +26,10 @@ public class TestStanfordTagger {
 
         java.io.InputStream in =  this.getClass().getClassLoader().getResourceAsStream("tagger.json");
         target1 = IOUtils.toString(in);
+
+        in =  this.getClass().getClassLoader().getResourceAsStream("splitter.json");
+        input2.setDiscriminator(Types.JSON);
+        input2.setPayload(IOUtils.toString(in));
     }
 
     public static final boolean jsonEqual(String json1, String json2) {
@@ -38,9 +45,17 @@ public class TestStanfordTagger {
 
     @Test
     public void test(){
+        // Define tagger
         StanfordTagger tagger  = new StanfordTagger();
+
+        // Test Text input
         Data output1 = tagger.execute(input1);
-        System.out.println(output1.getPayload());
         Assert.assertTrue(jsonEqual(output1.getPayload(), target1));
+
+
+        // Test JSON input
+        Data output2 = tagger.execute(input2);
+        System.out.println(output2.getPayload());
+
     }
 }
