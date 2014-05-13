@@ -2,5 +2,5 @@
 Lapps Grid Service Wrapping Examples
 
 
-Java HelloWorld Example.
+Stanford NLP Core Tagger Example.
 
