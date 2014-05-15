@@ -1,4 +1,5 @@
 {
+    "@context":"http://vocab.lappsgrid.org/context-1.0.0.jsonld",
     "text": {
         "@value": "Hi. How are you? This is Mike."
     },

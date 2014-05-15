@@ -1,4 +1,5 @@
 {
+    "@context":"http://vocab.lappsgrid.org/context-1.0.0.jsonld",
     "text": {
         "@value": "How are you today?"
     },
@@ -48,7 +49,7 @@
             ],
             "metadata": {
                 "contains": {
-                    "Tagger": {
+                    "Token": {
                         "producer": "org.lappsgrid.example.StanfordTagger:0.0.1-SNAPSHOT",
                         "type": "annotation:tagger"
                     }

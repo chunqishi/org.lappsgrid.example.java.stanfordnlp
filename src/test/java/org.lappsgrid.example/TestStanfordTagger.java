@@ -54,12 +54,14 @@ public class TestStanfordTagger {
 
         // Test Text input
         Data output1 = tagger.execute(input1);
-        Assert.assertTrue(jsonEqual(output1.getPayload(), target1));
+        System.out.println(output1.getPayload());
+        System.out.println(target1);
+        Assert.assertTrue("Unexpected JSON output!", jsonEqual(output1.getPayload(), target1));
 
 
         // Test JSON input
         Data output2 = tagger.execute(input2);
-//        System.out.println(output2.getPayload());
-        Assert.assertTrue(jsonEqual(output2.getPayload(), target2));
+        System.out.println(output2.getPayload());
+        Assert.assertTrue("Unexpected JSON output!", jsonEqual(output2.getPayload(), target2));
     }
 }

@@ -12,6 +12,7 @@ import org.lappsgrid.api.WebService;
 import org.lappsgrid.core.DataFactory;
 import org.lappsgrid.discriminator.DiscriminatorRegistry;
 import org.lappsgrid.discriminator.Types;
+import org.lappsgrid.serialization.json.JsonTaggerSerialization;
 import org.lappsgrid.vocabulary.Annotations;
 import org.lappsgrid.vocabulary.Features;
 
@@ -48,8 +49,8 @@ public class StanfordTagger implements WebService {
             }
             else  if (discriminator == Types.TEXT) {
                 String text = data.getPayload();
-                TaggerJSONWrapper json = new TaggerJSONWrapper();
-                json.setText(text);
+                JsonTaggerSerialization json = new JsonTaggerSerialization();
+                json.setTextValue(text);
                 json.setProducer(this.getClass().getName() + ":" + VERSION);
                 json.setType("annotation:tagger");
 
@@ -68,20 +69,20 @@ public class StanfordTagger implements WebService {
                         json.setWord(ann, word);
                         // pos
                         String pos = label.get(CoreAnnotations.PartOfSpeechAnnotation.class);
-                        json.setTag(ann, pos);
+                        json.setCategory(ann, pos);
                     }
                 }
                 return DataFactory.json(json.toString());
 
             } else  if (discriminator == Types.JSON) {
                 String textjson = data.getPayload();
-                TaggerJSONWrapper json = new TaggerJSONWrapper(textjson);
+                JsonTaggerSerialization json = new JsonTaggerSerialization(textjson);
 
                 json.setProducer(this.getClass().getName() + ":" + VERSION);
                 json.setType("annotation:tagger");
 
                 // Stanford Tagger
-                Annotation annotation = new Annotation(json.text.getString("@value"));
+                Annotation annotation = new Annotation(json.getTextValue());
                 snlp.annotate(annotation);
                 // sentences
                 List<CoreMap> sentences = annotation.get(CoreAnnotations.SentencesAnnotation.class);
@@ -95,7 +96,7 @@ public class StanfordTagger implements WebService {
                         json.setWord(ann, word);
                         // pos
                         String pos = label.get(CoreAnnotations.PartOfSpeechAnnotation.class);
-                        json.setTag(ann, pos);
+                        json.setCategory(ann, pos);
                     }
                 }
                 return DataFactory.json(json.toString());
