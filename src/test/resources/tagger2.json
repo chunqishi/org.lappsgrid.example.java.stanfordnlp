@@ -1,5 +1,5 @@
 {
-    "@context":"http://vocab.lappsgrid.org/context-1.0.0.jsonld",
+    "@context": "http://vocab.lappsgrid.org/context-1.0.0.jsonld",
     "text": {
         "@value": "Hi. How are you? This is Mike."
     },
@@ -29,96 +29,96 @@
             }
         },
         {
-            "annotations": [
-                {
-                    "id": "pos0",
-                    "@type": "Token",
-                    "features": {
-                        "category": "NN",
-                        "word": "Hi"
-                    }
-                },
-                {
-                    "id": "pos1",
-                    "@type": "Token",
-                    "features": {
-                        "category": ".",
-                        "word": "."
-                    }
-                },
-                {
-                    "id": "pos2",
-                    "@type": "Token",
-                    "features": {
-                        "category": "WRB",
-                        "word": "How"
-                    }
-                },
-                {
-                    "id": "pos3",
-                    "@type": "Token",
-                    "features": {
-                        "category": "VBP",
-                        "word": "are"
-                    }
-                },
-                {
-                    "id": "pos4",
-                    "@type": "Token",
-                    "features": {
-                        "category": "PRP",
-                        "word": "you"
-                    }
-                },
-                {
-                    "id": "pos5",
-                    "@type": "Token",
-                    "features": {
-                        "category": ".",
-                        "word": "?"
-                    }
-                },
-                {
-                    "id": "pos6",
-                    "@type": "Token",
-                    "features": {
-                        "category": "DT",
-                        "word": "This"
-                    }
-                },
-                {
-                    "id": "pos7",
-                    "@type": "Token",
-                    "features": {
-                        "category": "VBZ",
-                        "word": "is"
-                    }
-                },
-                {
-                    "id": "pos8",
-                    "@type": "Token",
-                    "features": {
-                        "category": "NNP",
-                        "word": "Mike"
-                    }
-                },
-                {
-                    "id": "pos9",
-                    "@type": "Token",
-                    "features": {
-                        "category": ".",
-                        "word": "."
-                    }
-                }
-            ],
             "metadata": {
                 "contains": {
-                    "Token": {
+                    "pos": {
                         "producer": "org.lappsgrid.example.StanfordTagger:0.0.1-SNAPSHOT",
                         "type": "annotation:tagger"
                     }
                 }
-            }
+            },
+            "annotations": [
+                {
+                    "@type": "Token",
+                    "id": "pos0",
+                    "features": {
+                        "word": "Hi",
+                        "pos": "NN"
+                    }
+                },
+                {
+                    "@type": "Token",
+                    "id": "pos1",
+                    "features": {
+                        "word": ".",
+                        "pos": "."
+                    }
+                },
+                {
+                    "@type": "Token",
+                    "id": "pos2",
+                    "features": {
+                        "word": "How",
+                        "pos": "WRB"
+                    }
+                },
+                {
+                    "@type": "Token",
+                    "id": "pos3",
+                    "features": {
+                        "word": "are",
+                        "pos": "VBP"
+                    }
+                },
+                {
+                    "@type": "Token",
+                    "id": "pos4",
+                    "features": {
+                        "word": "you",
+                        "pos": "PRP"
+                    }
+                },
+                {
+                    "@type": "Token",
+                    "id": "pos5",
+                    "features": {
+                        "word": "?",
+                        "pos": "."
+                    }
+                },
+                {
+                    "@type": "Token",
+                    "id": "pos6",
+                    "features": {
+                        "word": "This",
+                        "pos": "DT"
+                    }
+                },
+                {
+                    "@type": "Token",
+                    "id": "pos7",
+                    "features": {
+                        "word": "is",
+                        "pos": "VBZ"
+                    }
+                },
+                {
+                    "@type": "Token",
+                    "id": "pos8",
+                    "features": {
+                        "word": "Mike",
+                        "pos": "NNP"
+                    }
+                },
+                {
+                    "@type": "Token",
+                    "id": "pos9",
+                    "features": {
+                        "word": ".",
+                        "pos": "."
+                    }
+                }
+            ]
         }
     ],
     "metadata": {}

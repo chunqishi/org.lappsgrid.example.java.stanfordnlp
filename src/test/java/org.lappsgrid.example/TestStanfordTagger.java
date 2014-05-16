@@ -2,12 +2,12 @@ package org.lappsgrid.example;
 
 import junit.framework.Assert;
 import org.apache.commons.io.IOUtils;
-import org.json.JSONObject;
 import org.junit.Test;
 import org.junit.After;
 import org.junit.Before;
 import org.lappsgrid.api.Data;
 import org.lappsgrid.discriminator.Types;
+import org.lappsgrid.serialization.json.JSONObject;
 
 import java.io.IOException;
 
@@ -56,6 +56,7 @@ public class TestStanfordTagger {
         Data output1 = tagger.execute(input1);
         System.out.println(output1.getPayload());
         System.out.println(target1);
+        System.out.println();
         Assert.assertTrue("Unexpected JSON output!", jsonEqual(output1.getPayload(), target1));
 
 
